@@ -1,0 +1,76 @@
+<!-- templates/debug.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0">Debug Information</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h5>Database Status</h5>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Total Customers:</strong> {{ customers_count }}</p>
+                                <p><strong>Total Products:</strong> {{ products_count }}</p>
+                                
+                                {% if customers_count > 0 %}
+                                    <div class="alert alert-success">
+                                        <i class="fas fa-check-circle"></i> Customers data found!
+                                    </div>
+                                {% else %}
+                                    <div class="alert alert-danger">
+                                        <i class="fas fa-exclamation-circle"></i> No customers found!
+                                    </div>
+                                {% endif %}
+                                
+                                {% if products_count > 0 %}
+                                    <div class="alert alert-success">
+                                        <i class="fas fa-check-circle"></i> Products data found!
+                                    </div>
+                                {% else %}
+                                    <div class="alert alert-danger">
+                                        <i class="fas fa-exclamation-circle"></i> No products found!
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-success text-white">
+                                <h5>Sample Data</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6>First 10 Customers:</h6>
+                                {% for customer in customers_list %}
+                                    <div class="border-bottom py-1">
+                                        <strong>#{{ customer.id }}</strong>: {{ customer.name }} - {{ customer.email }}
+                                    </div>
+                                {% empty %}
+                                    <div class="text-danger">No customers in database</div>
+                                {% endfor %}
+                                
+                                <h6 class="mt-3">First 10 Products:</h6>
+                                {% for product in products_list %}
+                                    <div class="border-bottom py-1">
+                                        <strong>#{{ product.id }}</strong>: {{ product.name }} - {{ product.category }}
+                                    </div>
+                                {% empty %}
+                                    <div class="text-danger">No products in database</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center mb-5">
+        <h1 class="display-4">Django DataTables Demo</h1>
+        <p class="lead">Server-side processing with export functionality</p>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-users fa-3x text-success mb-3"></i>
+                <h3>Customers</h3>
+                <p>View and export customer data with DataTables</p>
+                <a href="{% url 'customer_list' %}" class="btn btn-success">View Customers</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-boxes fa-3x text-info mb-3"></i>
+                <h3>Products</h3>
+                <p>View and export product data with DataTables</p>
+                <a href="{% url 'product_list' %}" class="btn btn-info">View Products</a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}
